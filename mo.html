@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegance & Serenity - Your Beauty Salon</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom styles for Inter font and smooth scrolling */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Hide scrollbar for a cleaner look, but keep functionality */
+        body::-webkit-scrollbar {
+            display: none;
+        }
+        body {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        .nav-link:hover {
+            color: #a78bfa; /* A subtle hover effect */
+        }
+        .section-padding {
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+        /* Custom styles for the booking form date/time pickers to match theme */
+        input[type="date"],
+        input[type="time"],
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #d1d5db; /* Light gray border */
+            background-color: #f9fafb; /* Light background */
+            font-size: 1rem;
+            color: #374151; /* Darker text */
+            width: 100%;
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+        input[type="date"]:focus,
+        input[type="time"]:focus,
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #a78bfa; /* Focus color */
+            box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.3); /* Subtle focus ring */
+        }
+        /* Placeholder styling */
+        input::placeholder,
+        textarea::placeholder {
+            color: #9ca3af; /* Lighter gray for placeholders */
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed w-full bg-white shadow-sm z-50 py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold text-gray-900">Elegance & Serenity</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-gray-700 hover:text-purple-600 transition duration-300">Home</a>
+                <a href="#about" class="nav-link text-gray-700 hover:text-purple-600 transition duration-300">About</a>
+                <a href="#services" class="nav-link text-gray-700 hover:text-purple-600 transition duration-300">Services</a>
+                <a href="#gallery" class="nav-link text-gray-700 hover:text-purple-600 transition duration-300">Gallery</a>
+                <a href="#booking" class="nav-link text-gray-700 hover:text-purple-600 transition duration-300">Booking</a>
+                <a href="#contact" class="nav-link text-gray-700 hover:text-purple-600 transition duration-300">Contact</a>
+            </div>
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white bg-opacity-95 z-40 flex flex-col items-center justify-center space-y-8 text-2xl">
+            <button id="close-mobile-menu" class="absolute top-6 right-6 text-gray-700 focus:outline-none">
+                <i class="fas fa-times text-3xl"></i>
+            </button>
+            <a href="#home" class="nav-link text-gray-700 hover:text-purple-600 transition duration-300" onclick="hideMobileMenu()">Home</a>
+            <a href="#about" class="nav-link text-gray-700 hover:text-purple-600 transition duration-300" onclick="hideMobileMenu()">About</a>
+            <a href="#services" class="nav-link text-gray-700 hover:text-purple-600 transition duration-300" onclick="hideMobileMenu()">Services</a>
+            <a href="#gallery" class="nav-link text-gray-700 hover:text-purple-600 transition duration-300" onclick="hideMobileMenu()">Gallery</a>
+            <a href="#booking" class="nav-link text-gray-700 hover:text-purple-600 transition duration-300" onclick="hideMobileMenu()">Booking</a>
+            <a href="#contact" class="nav-link text-gray-700 hover:text-purple-600 transition duration-300" onclick="hideMobileMenu()">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Home Section (Hero) -->
+    <section id="home" class="relative h-screen flex items-center justify-center bg-gray-100 overflow-hidden">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://placehold.co/1920x1080/E0E0E0/333333?text=Salon+Interior+Hero');"></div>
+        <div class="absolute inset-0 bg-black opacity-40"></div>
+        <div class="text-center text-white z-10 p-6 max-w-2xl mx-auto">
+            <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-4 tracking-tight">
+                Discover Your Radiance
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 font-light">
+                Experience unparalleled beauty services in a serene and elegant environment.
+            </p>
+            <a href="#booking" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                Book Your Appointment
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding bg-white">
+        <div class="container mx-auto px-6 text-center max-w-3xl">
+            <h2 class="text-4xl font-bold mb-8 text-gray-900">About Elegance & Serenity</h2>
+            <p class="text-lg leading-relaxed mb-6 text-gray-700">
+                At Elegance & Serenity, we believe true beauty comes from within and is enhanced by expert care. Our salon is a tranquil oasis designed for your ultimate relaxation and rejuvenation. We are dedicated to providing personalized beauty treatments that leave you feeling refreshed, confident, and beautiful.
+            </p>
+            <p class="text-lg leading-relaxed text-gray-700">
+                Our team of highly skilled professionals uses only the finest products and techniques to ensure exceptional results. From luxurious facials to transformative hair styling, every service is crafted to meet your unique needs and desires.
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-padding bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-900">Our Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Item 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">Hair Styling & Care</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>Haircuts (Men & Women)</li>
+                        <li>Coloring & Highlights</li>
+                        <li>Deep Conditioning Treatments</li>
+                        <li>Blowouts & Updos</li>
+                    </ul>
+                </div>
+                <!-- Service Item 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">Facial Treatments</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>Classic European Facial</li>
+                        <li>Anti-Aging Facial</li>
+                        <li>Acne Treatment Facial</li>
+                        <li>Hydrating Facial</li>
+                    </ul>
+                </div>
+                <!-- Service Item 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">Nail Care</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>Manicures & Pedicures</li>
+                        <li>Gel & Acrylic Nails</li>
+                        <li>Nail Art</li>
+                        <li>Paraffin Treatments</li>
+                    </ul>
+                </div>
+                <!-- Service Item 4 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">Massage Therapy</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>Swedish Massage</li>
+                        <li>Deep Tissue Massage</li>
+                        <li>Hot Stone Massage</li>
+                        <li>Aromatherapy Massage</li>
+                    </ul>
+                </div>
+                <!-- Service Item 5 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">Waxing & Hair Removal</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>Full Body Waxing</li>
+                        <li>Eyebrow Shaping</li>
+                        <li>Laser Hair Removal (Consultation)</li>
+                    </ul>
+                </div>
+                <!-- Service Item 6 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">Makeup & Aesthetics</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>Bridal Makeup</li>
+                        <li>Evening Makeup</li>
+                        <li>Eyelash Extensions</li>
+                        <li>Microblading (Consultation)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section-padding bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-900">Our Gallery</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Gallery Item 1 -->
+                <div class="rounded-lg overflow-hidden shadow-md">
+                    <img src="https://placehold.co/600x400/D1C4E9/4527A0?text=Hair+Styling" alt="Hair Styling" class="w-full h-auto object-cover transform hover:scale-105 transition duration-300">
+                </div>
+                <!-- Gallery Item 2 -->
+                <div class="rounded-lg overflow-hidden shadow-md">
+                    <img src="https://placehold.co/600x400/C5CAE9/3F51B5?text=Facial+Treatment" alt="Facial Treatment" class="w-full h-auto object-cover transform hover:scale-105 transition duration-300">
+                </div>
+                <!-- Gallery Item 3 -->
+                <div class="rounded-lg overflow-hidden shadow-md">
+                    <img src="https://placehold.co/600x400/BBDEFB/2196F3?text=Manicure" alt="Manicure" class="w-full h-auto object-cover transform hover:scale-105 transition duration-300">
+                </div>
+                <!-- Gallery Item 4 -->
+                <div class="rounded-lg overflow-hidden shadow-md">
+                    <img src="https://placehold.co/600x400/B2EBF2/00BCD4?text=Pedicure" alt="Pedicure" class="w-full h-auto object-cover transform hover:scale-105 transition duration-300">
+                </div>
+                <!-- Gallery Item 5 -->
+                <div class="rounded-lg overflow-hidden shadow-md">
+                    <img src="https://placehold.co/600x400/B9F6CA/00C853?text=Makeup+Artistry" alt="Makeup Artistry" class="w-full h-auto object-cover transform hover:scale-105 transition duration-300">
+                </div>
+                <!-- Gallery Item 6 -->
+                <div class="rounded-lg overflow-hidden shadow-md">
+                    <img src="https://placehold.co/600x400/DCEDC8/689F38?text=Spa+Relaxation" alt="Spa Relaxation" class="w-full h-auto object-cover transform hover:scale-105 transition duration-300">
+                </div>
+                <!-- Gallery Item 7 -->
+                <div class="rounded-lg overflow-hidden shadow-md">
+                    <img src="https://placehold.co/600x400/F0F4C3/AFB42B?text=Hair+Coloring" alt="Hair Coloring" class="w-full h-auto object-cover transform hover:scale-105 transition duration-300">
+                </div>
+                <!-- Gallery Item 8 -->
+                <div class="rounded-lg overflow-hidden shadow-md">
+                    <img src="https://placehold.co/600x400/FFF9C4/FBC02D?text=Eyelash+Extensions" alt="Eyelash Extensions" class="w-full h-auto object-cover transform hover:scale-105 transition duration-300">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="section-padding bg-gray-50">
+        <div class="container mx-auto px-6 max-w-2xl">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-900">Book Your Appointment</h2>
+            <div class="bg-white p-8 rounded-lg shadow-md">
+                <form id="booking-form" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="john.doe@example.com">
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                        <input type="text" id="phone" name="phone" placeholder="+1 (123) 456-7890">
+                    </div>
+                    <div>
+                        <label for="service" class="block text-sm font-medium text-gray-700 mb-1">Select Service</label>
+                        <select id="service" name="service" required class="w-full p-3 border border-gray-300 rounded-lg bg-gray-50 focus:ring-purple-500 focus:border-purple-500">
+                            <option value="">-- Choose a Service --</option>
+                            <option value="hair-styling">Hair Styling & Care</option>
+                            <option value="facial-treatment">Facial Treatments</option>
+                            <option value="nail-care">Nail Care</option>
+                            <option value="massage-therapy">Massage Therapy</option>
+                            <option value="waxing">Waxing & Hair Removal</option>
+                            <option value="makeup">Makeup & Aesthetics</option>
+                        </select>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Preferred Date</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div>
+                            <label for="time" class="block text-sm font-medium text-gray-700 mb-1">Preferred Time</label>
+                            <input type="time" id="time" name="time" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Additional Notes (Optional)</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Any specific requests or concerns?"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 transform hover:scale-105">
+                        Confirm Booking
+                    </button>
+                </form>
+                <!-- Booking Confirmation Modal -->
+                <div id="booking-confirmation-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div class="bg-white p-8 rounded-lg shadow-xl max-w-sm w-full text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Booking Confirmed!</h3>
+                        <p class="text-gray-700 mb-6">Thank you for your appointment request. We will contact you shortly to confirm the details.</p>
+                        <button id="close-modal-button" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-sm text-gray-600 mt-6">
+                For actual Google Calendar integration, a server-side solution or a dedicated booking platform would be required. This form serves as a front-end placeholder.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-white">
+        <div class="container mx-auto px-6 max-w-2xl">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-900">Get in Touch</h2>
+            <div class="bg-gray-50 p-8 rounded-lg shadow-md text-center">
+                <p class="text-lg mb-4 text-gray-700">Have questions or need assistance? We're here to help!</p>
+                <div class="space-y-4 mb-8">
+                    <p class="text-xl font-semibold text-gray-900">
+                        <i class="fas fa-phone-alt text-purple-600 mr-3"></i> +234 707 261 6996
+                    </p>
+                    <p class="text-xl font-semibold text-gray-900">
+                        <i class="fas fa-envelope text-purple-600 mr-3"></i> info@eleganceandserenity.com
+                    </p>
+                    <p class="text-xl font-semibold text-gray-900">
+                        <i class="fas fa-map-marker-alt text-purple-600 mr-3"></i> 123 Beauty Lane, Serene City, BS 12345
+                    </p>
+                </div>
+                <!-- Simple Contact Form (will just show a confirmation) -->
+                <form id="contact-form" class="space-y-4">
+                    <div>
+                        <input type="text" id="contact-name" name="name" required placeholder="Your Name">
+                    </div>
+                    <div>
+                        <input type="email" id="contact-email" name="email" required placeholder="Your Email">
+                    </div>
+                    <div>
+                        <textarea id="contact-message" name="message" rows="5" placeholder="Your Message"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 transform hover:scale-105">
+                        Send Message
+                    </button>
+                </form>
+                 <!-- Contact Confirmation Modal -->
+                 <div id="contact-confirmation-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div class="bg-white p-8 rounded-lg shadow-xl max-w-sm w-full text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Message Sent!</h3>
+                        <p class="text-gray-700 mb-6">Thank you for reaching out. We will get back to you soon.</p>
+                        <button id="close-contact-modal-button" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Elegance & Serenity. All rights reserved.</p>
+            <div class="flex justify-center space-x-6 mt-6">
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-facebook-f text-2xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-instagram text-2xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-twitter text-2xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition duration-300"><i class="fab fa-pinterest-p text-2xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+        });
+
+        closeMobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+
+        function hideMobileMenu() {
+            mobileMenu.classList.add('hidden');
+        }
+
+        // JavaScript for booking form submission and modal
+        const bookingForm = document.getElementById('booking-form');
+        const bookingConfirmationModal = document.getElementById('booking-confirmation-modal');
+        const closeModalButton = document.getElementById('close-modal-button');
+
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent default form submission
+            // In a real application, you would send this data to a server
+            // for Google Calendar integration or database storage.
+            console.log('Booking form submitted!');
+            // Simulate success and show confirmation modal
+            bookingConfirmationModal.classList.remove('hidden');
+            bookingForm.reset(); // Clear the form
+        });
+
+        closeModalButton.addEventListener('click', () => {
+            bookingConfirmationModal.classList.add('hidden');
+        });
+
+        // JavaScript for contact form submission and modal
+        const contactForm = document.getElementById('contact-form');
+        const contactConfirmationModal = document.getElementById('contact-confirmation-modal');
+        const closeContactModalButton = document.getElementById('close-contact-modal-button');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent default form submission
+            console.log('Contact form submitted!');
+            // Simulate success and show confirmation modal
+            contactConfirmationModal.classList.remove('hidden');
+            contactForm.reset(); // Clear the form
+        });
+
+        closeContactModalButton.addEventListener('click', () => {
+            contactConfirmationModal.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
